@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Jobs from './components/jobs'
+
+//Mock data
+const mockJobs = [
+  { title: 'SWE 1', company: 'Google'},
+  { title: 'SWE 1', company: 'Facebook'}
+]
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Jobs jobs={mockJobs}/>
     </div>
   );
 }
