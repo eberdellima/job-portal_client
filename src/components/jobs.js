@@ -53,8 +53,8 @@ export default function Jobs({ jobs }) {
 
       {
         jobsOnPage.map((job, i) => <Job key={i} job={job}  onClick={() => {
-          handleClickOpen()
           setSelectedJob(job)
+          handleClickOpen()
         }} />)
       }
 
