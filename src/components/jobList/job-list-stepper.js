@@ -12,7 +12,7 @@ export default function JobListStepper({options}) {
   const { activeStep, numPages, handleBack, handleNext } = options
 
   return (
-    <div>
+    <div className="stepper">
       <div>
         Page {activeStep + 1} of {numPages}
       </div>

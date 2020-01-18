@@ -7,7 +7,7 @@ export default function JobListHeader({numJobs}) {
       <Typography variant="h4" component="h1" align="center" >
         Entry Level Software Jobs
       </Typography>
-      <Typography variant="h6" component="h2" align="center">
+      <Typography variant="h6" component="h2" align="center" paragraph>
         Found {numJobs} total
       </Typography>
     </div>

@@ -1,11 +1,12 @@
 body {
   margin: 20px 40px;
+  background-color: #fafbfc;
 }
 
 .job {
   width: 80%;
   display: flex;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 10px;
   align-items: center;
   justify-content: space-between;
@@ -24,8 +25,20 @@ body {
   padding: 30px 50px;
 }
 
+.job-dialog-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .detail-logo {
-  height: 30px;
+  height: 50px;
   float: right;
+}
+
+.stepper {
+  margin: 0 auto;
+  width: 80%;
+  background-color: #fafbfc;
 }
 

@@ -9,7 +9,7 @@ export default function Job({ job, onClick }) {
   }
 
   return (
-    <Paper className={'job'} onClick={onClick} elevation={2}>
+    <Paper className={'job'} onClick={onClick} elevation={1}>
       <div className="job-details">
         <Typography variant="h5" >{job.title}</Typography>
         <Typography variant="h6">{job.company}</Typography>
