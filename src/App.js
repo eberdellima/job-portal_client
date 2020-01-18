@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import Jobs from './components/jobs'
+import Jobs from './components/jobList/index'
 
 const JOBS_API_URL = "http://localhost:8080/jobs"
 

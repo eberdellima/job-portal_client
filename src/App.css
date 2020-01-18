@@ -4,17 +4,16 @@ body {
 
 .job {
   width: 80%;
-  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-  padding: 10px 10px;
+  margin: 0 auto;
+  padding: 10px;
   align-items: center;
+  justify-content: space-between;
 }
 
 .job:hover {
   cursor: pointer;
-  color: #666666;
+  background-color: skyblue;
 }
 
 .job-company {
@@ -30,11 +29,3 @@ body {
   float: right;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
