@@ -8,6 +8,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 import Job from './job';
+import JobModal from './jobModal';
 
 
 export default function Jobs({ jobs }) {
@@ -18,6 +19,8 @@ export default function Jobs({ jobs }) {
   const numPages = Math.ceil(numJobs / 50)
 
   const [activeStep, setActiveStep] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
+  const [selectedJob, setSelectedJob] = React.useState({})
 
   const jobsOnPage = jobs.slice(activeStep * 50, (activeStep * 50) + 50 - 1)
 
@@ -29,9 +32,18 @@ export default function Jobs({ jobs }) {
     setActiveStep(prevActiveStep => prevActiveStep - 1);
   };
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 
   return (
     <div className={'jobs'}>
+      <JobModal open={open} job={selectedJob} handleClose={handleClose}/>
       <Typography variant="h4" component="h1">
         Entry Level Software Jobs
       </Typography>
@@ -40,7 +52,10 @@ export default function Jobs({ jobs }) {
       </Typography>
 
       {
-        jobsOnPage.map((job, i) => <Job key={i} job={job} />)
+        jobsOnPage.map((job, i) => <Job key={i} job={job}  onClick={() => {
+          handleClickOpen()
+          setSelectedJob(job)
+        }} />)
       }
 
       <div>

@@ -5,9 +5,9 @@ function formatDate(date) {
   return date.split(' ').slice(0, 3).join(' ')
 }
 
-export default function Job({ job }) {
+export default function Job({ job, onClick }) {
   return (
-    <Paper className={'job'}>
+    <Paper className={'job'} onClick={onClick}>
       <div>
         <Typography variant="h6" >{job.title}</Typography>
         <Typography variant="h5">{job.company}</Typography>
