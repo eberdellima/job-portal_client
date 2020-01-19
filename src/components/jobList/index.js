@@ -5,19 +5,33 @@ import JobListHeader from './job-list-header';
 import JobList from './job-list'
 import JobListStepper from './job-list-stepper';
 
+import fetchJobs from '../../utils/fetch-jobs'
 
-export default function Jobs({ jobs }) {
+const initialJobs = {
+  total_jobs: 0,
+  total_pages: 0,
+  jobs: []
+}
+
+export default function Jobs() {
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [open, setOpen] = React.useState(false);
   const [selectedJob, setSelectedJob] = React.useState({})
+  const [page, setPage] = React.useState(1)
+  const [jobs, setJobs] = React.useState(initialJobs)
+
+  const handleJobsUpdate = () => { fetchJobs(page, setJobs) }
+  React.useEffect(handleJobsUpdate, [page])
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
+    setPage(page + 1)
   };
 
   const handleBack = () => {
     setActiveStep(prevActiveStep => prevActiveStep - 1);
+    setPage(page - 1)
   };
 
   const handleClickOpen = () => {
@@ -28,14 +42,15 @@ export default function Jobs({ jobs }) {
     setOpen(false);
   };
 
-  const numJobs = jobs.length
-  const numPages = Math.ceil(numJobs / 50)
-  
-  const jobsOnPage = jobs.slice(activeStep * 50, (activeStep * 50) + 50 - 1)
+  const {
+    total_jobs: numJobs,
+    total_pages: numPages,
+    jobs: jobsOnPage
+  } = jobs
 
   const stepperOptions = {
     activeStep,
-    numPages,
+    numPages: numPages ? numPages : 0,
     handleBack,
     handleNext
   }
@@ -44,7 +59,7 @@ export default function Jobs({ jobs }) {
     <div className={'jobs'}>
       <JobModal open={open} job={selectedJob} handleClose={handleClose}/>
       <JobListHeader numJobs={numJobs} />
-      <JobList jobs={jobsOnPage} selectJob={setSelectedJob} openModal={handleClickOpen}/>
+      <JobList jobs={jobsOnPage} selectJob={setSelectedJob} openModal={handleClickOpen} />
       <JobListStepper options={stepperOptions} />
     </div>
   )

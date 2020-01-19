@@ -16,7 +16,7 @@ export default function JobList({jobs, selectJob, openModal}) {
 
   return (
     <div>
-      { jobs.map(processor) }
+      { (jobs || []).map(processor) }
     </div>
   )
 }
