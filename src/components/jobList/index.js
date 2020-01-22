@@ -21,8 +21,15 @@ export default function Jobs() {
   const [selectedJob, setSelectedJob] = React.useState({})
   const [page, setPage] = React.useState(1)
   const [jobs, setJobs] = React.useState(initialJobs)
+  const [searchTerm, setSearchTerm] = React.useState('')
 
-  const handleJobsUpdate = () => { fetchJobs(page, setJobs) }
+  const handleJobsUpdate = () => { 
+    if(!searchTerm || searchTerm === '') {
+      fetchJobs(page, setJobs) 
+    } else {
+      fetchJobsPerTerm(page, searchTerm, setJobs)
+    }
+  }
   React.useEffect(handleJobsUpdate, [page])
 
   const handleNext = () => {
@@ -43,9 +50,12 @@ export default function Jobs() {
     setOpen(false);
   };
 
-  const handleJobSearch = (e) => {
-    // extract term
-    // fetchJobsPerTerm
+  const handleJobSearch = () => {
+    fetchJobsPerTerm(page, searchTerm, setJobs)
+  }
+
+  const handleSearchTermUpdate = (term) => {
+    setSearchTerm(term)
   }
 
   const {
@@ -65,7 +75,7 @@ export default function Jobs() {
     <div className={'jobs'}>
       <JobModal open={open} job={selectedJob} handleClose={handleClose}/>
       <JobListHeader numJobs={numJobs} />
-      <SearchBar />
+      <SearchBar searchTerm={searchTerm} searchTermHandler={handleSearchTermUpdate} search={handleJobSearch}/>
       <JobList jobs={jobsOnPage} selectJob={setSelectedJob} openModal={handleClickOpen} />
       <JobListStepper options={stepperOptions} />
     </div>
