@@ -42,3 +42,30 @@ body {
   background-color: #fafbfc;
 }
 
+.search {
+  display: flex;
+  position: relative;
+  width: 80%;
+  margin: 10px auto;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.search-icon {
+  padding: 0 7px;
+  height: 100%;
+  position: relative;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-root {
+  color: inherit;
+}
+
+.input-input {
+  padding: 1px 1px 1px 7px;
+  width: 100%;
+}

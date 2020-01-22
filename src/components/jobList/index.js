@@ -4,8 +4,9 @@ import JobModal from '../jobModal';
 import JobListHeader from './job-list-header';
 import JobList from './job-list'
 import JobListStepper from './job-list-stepper';
+import SearchBar from '../search-bar';
 
-import fetchJobs from '../../utils/fetch-jobs'
+import { fetchJobs, fetchJobsPerTerm} from '../../utils/fetch-jobs'
 
 const initialJobs = {
   total_jobs: 0,
@@ -42,6 +43,11 @@ export default function Jobs() {
     setOpen(false);
   };
 
+  const handleJobSearch = (e) => {
+    // extract term
+    // fetchJobsPerTerm
+  }
+
   const {
     total_jobs: numJobs,
     total_pages: numPages,
@@ -59,6 +65,7 @@ export default function Jobs() {
     <div className={'jobs'}>
       <JobModal open={open} job={selectedJob} handleClose={handleClose}/>
       <JobListHeader numJobs={numJobs} />
+      <SearchBar />
       <JobList jobs={jobsOnPage} selectJob={setSelectedJob} openModal={handleClickOpen} />
       <JobListStepper options={stepperOptions} />
     </div>
