@@ -51,7 +51,10 @@ export default function Jobs() {
   };
 
   const handleJobSearch = () => {
-    fetchJobsPerTerm(page, searchTerm, setJobs)
+    const resetPage = 0
+    setActiveStep(0)
+    setPage(resetPage)
+    fetchJobsPerTerm(resetPage, searchTerm, setJobs)
   }
 
   const handleSearchTermUpdate = (term) => {

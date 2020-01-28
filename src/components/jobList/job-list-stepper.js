@@ -14,7 +14,7 @@ export default function JobListStepper({options}) {
   return (
     <div className="stepper">
       <div>
-        Page {activeStep + 1} of {numPages}
+        Page {activeStep + 1} of {numPages === 0 ? numPages + 1 : numPages}
       </div>
 
       <MobileStepper
@@ -23,7 +23,7 @@ export default function JobListStepper({options}) {
         position="static"
         activeStep={activeStep}
         nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === numPages - 1}>
+          <Button size="small" onClick={handleNext} disabled={activeStep === numPages - 1 || numPages === 0}>
             Next
           <KeyboardArrowRight />
           </Button>
